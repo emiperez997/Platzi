@@ -2,4 +2,4 @@
 
 ## Rutas
 - Backend con Nodejs
-  [] Curso Básico de JavaScript
+  - [ ] Curso Básico de JavaScript
