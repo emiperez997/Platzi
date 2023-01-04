@@ -1,0 +1,6 @@
+Event Loop: Thread Pool
+Callabck Hell: Todas las anteriores
+Modulos globales: Crypto
+Modulos nativos: C++ y JavaScript
+Puertos: En cualquiera
+Podemos para el codigo?: 
