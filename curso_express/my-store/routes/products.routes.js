@@ -1,74 +1,52 @@
 const { Router } = require('express');
-const faker = require('faker');
+const ProductsService = require('../services/product.service');
 
 const router = Router();
+const service = new ProductsService();
 
 // GET
-router.get('/filter', (req, res) => {
-  // Choca con products/:id
-  res.send('Yo soy un filter');
-});
 
-router.get('/:id', (req, res) => {
+router.get('/', async (req, res) => {
+  const products = await service.find();
+  res.json(products)
+})
+
+router.get('/:id', async (req, res) => {
   const { id } = req.params;
-  if (Number(id) === 999) {
-    res.status(404).json({
-      message: 'Not found',
-    });
-  } else {
-    res.json({
-      id,
-      name: `Product ${id}`,
-      price: Math.floor(Math.random() * 1000),
-    });
-  }
-});
-
-router.get('/', (req, res) => {
-  const { size } = req.query;
-  const limit = size || 10;
-  const products = [];
-  for (let i = 0; i < limit; i++) {
-    products.push({
-      name: faker.commerce.productName(),
-      price: Number(faker.commerce.price(), 10),
-      image: faker.image.imageUrl(),
-    });
-  }
-
-  res.json(products);
+  const product = await service.findOne(id);
+  res.json(product);
 });
 
 // POST
-router.post('/', (req, res) => {
+router.post('/', async (req, res) => {
+  console.log(req.body)
   const body = req.body;
-
-  res.status(201).json({
-    message: 'Created',
-    data: body,
-  });
+  const newProduct = await service.create(body);
+  res.status(201).json(newProduct);  
 });
 
 // PATCH
-router.patch('/:id', (req, res) => {
-  const { id } = req.params;
-  const body = req.body;
+router.patch('/:id', async (req, res) => {
+  try {
 
-  res.json({
-    message: 'Updated',
-    data: body,
-    id,
-  });
+    const { id } = req.params;
+    const body = req.body;
+
+    const product = await service.update(id, body);
+    res.json(product);
+  } catch(error) {
+    res.status(404).json({
+      message: error.message
+    })
+  }
 });
 
 // DELETE
-router.delete('/:id', (req, res) => {
+router.delete('/:id', async (req, res) => {
   const { id } = req.params;
+  const response = await service.delete(id);
 
-  res.json({
-    message: 'Deleted',
-    id,
-  });
+  res.json(response);
 });
 
 module.exports = router;

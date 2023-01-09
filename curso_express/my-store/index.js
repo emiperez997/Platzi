@@ -17,6 +17,15 @@ app.get('/new-route', (req, res) => {
   res.send('<h1> Hello world from new route </h1>');
 });
 
+app.post('/', (req, res) => {
+  console.log(req.body);
+  res.json(req.body)
+})
+
+app.get('/holi', (req, res) => {
+  res.send('<h1> Hello world </h1>');
+});
+
 // Me devuelve todos los productos
 // req.params
 // app.get('/products', (req, res) => {
@@ -67,7 +76,5 @@ app.get('/new-route', (req, res) => {
 // })
 
 router(app)
-
-
 
 app.listen(PORT, () => console.log(`Server on port ${PORT}`)); // Mi app corre en el puerto 3000
