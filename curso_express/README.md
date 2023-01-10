@@ -4,6 +4,6 @@
 - [ x ] Introducción
 - [ x ] CRUD
 - [ x ] Servicios
-- [ ] Middlewares
-- [ ] Deployment
-- [ ] Próximos Pasos
+- [ x ] Middlewares
+- [ x ] Deployment
+- [ x ] Próximos pasos

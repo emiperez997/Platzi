@@ -42,3 +42,11 @@
 - Status Code
   - 404: Error Not Found
   - 500: Server error
+
+## Consideraciones para produccion
+- Cors: Qué accesos y a quienes le damos acceso para hacer solicitudes
+- HTTPs: Que la API este sobre servidor de HTTPs
+- Procesos de Build: Se ve en procesos de cosas que tiene que procesar información (Typescript)
+- Remover logs: No es bueno tener logs.
+- Seguridad (Helmet): Coloca capas de seguridad
+- Testing: Correr pruebas unitarias o de integración antes de salir a producción
