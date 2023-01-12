@@ -2,7 +2,7 @@
 
 ## Secciones
 - [ x ] Introducción
-- [  ] Base de Datos
+- [ x ] Base de Datos
 - [  ] Sequelize
 - [  ] Migraciones
 - [  ] Relaciones

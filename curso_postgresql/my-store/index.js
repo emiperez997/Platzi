@@ -13,19 +13,7 @@ const PORT = 3000; // Defino mi puerto
 // Configuracion del Servidor
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-const whitelist = ['http://localhost:3000', 'http://127.0.0.1:8080/']; // Lista de dominios permitidos
-
-const options = {
-  origin: (origin, callback) => {
-    console.log(origin);
-    if (whitelist.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-};
-app.use(cors(options));
+app.use(cors());
 
 // Endpoints
 app.get('/', (req, res) => {

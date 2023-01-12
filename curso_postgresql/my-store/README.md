@@ -77,3 +77,9 @@
     - Port -> <puerto_servicio>
     - User -> <usuario_servicio>
     - Password -> <password_servicio>
+
+## Pool de conexiones
+- Es un conjunto limitado de  conexiones a una base de datos, que es manejado por un servidor de aplicaciones de forma tal, que dichas conexiones pueden ser reutilizadas por los diferentes usuarios.
+
+## .env
+
