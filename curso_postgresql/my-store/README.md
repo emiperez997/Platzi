@@ -82,4 +82,28 @@
 - Es un conjunto limitado de  conexiones a una base de datos, que es manejado por un servidor de aplicaciones de forma tal, que dichas conexiones pueden ser reutilizadas por los diferentes usuarios.
 
 ## .env
+- dotenv
+- require('dotenv').config() -> En config/db.js
+
+## ORM
+- Object Relational Mapping
+- Abstrae las consultas de SQL por nosotros
+- ORMs
+  - Sequelize
+  - Prisma
+
+## Sequelize
+- Utiliza pool en cada instancia
+- Utiliza opciones al inicializar
+
+      {
+        dialect: 'postgres', // Que db vamos a usar
+        logging: console.log, // Para ver las consultas que se hacen
+      }
+      
+- Para hacer una query, utiliza la funcion .query y devuelve dos cosas:
+  - Data -> Los registros de la tabla (o informacion que buscamos)
+  - Metadata -> Mas detalles sobre la consulta y los datos que deuvelve
+
+## Modelos Sequelize
 

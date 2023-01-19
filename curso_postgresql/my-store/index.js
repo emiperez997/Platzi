@@ -4,6 +4,7 @@ const {
   errorHandler,
   logErrors,
   boomErrorHandler,
+  ormErrorHandler,
 } = require('./middlewares/error.handler');
 const cors = require('cors');
 
@@ -39,5 +40,6 @@ router(app);
 app.use(logErrors);
 app.use(boomErrorHandler);
 app.use(errorHandler);
+app.use(ormErrorHandler)
 
 app.listen(PORT, () => console.log(`Server on port ${PORT}`)); // Mi app corre en el puerto 3000

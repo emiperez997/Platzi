@@ -1,15 +1,17 @@
 const boom = require('@hapi/boom');
 const faker = require('faker');
-const pool = require('../libs/postgres.pool');
+// const pool = require('../libs/postgres.pool');
+// const pool = require('../libs/sequelize');
+const { models } = require('../libs/sequelize');
 
 class ProductsService {
   constructor() {
-    this.products = [];
-    this.generate();
-    this.pool = pool;
-    this.pool.on('error', (err, client) => {
-      console.error('Unexpected error on idle client', err);
-    });
+    // this.products = [];
+    // this.generate();
+    // this.pool = pool;
+    // this.pool.on('error', (err, client) => {
+      // console.error('Unexpected error on idle client', err);
+    // });
   }
 
   generate() {
@@ -35,20 +37,33 @@ class ProductsService {
   }
 
   async find() {
-    const query = 'SELECT * from task';
-    const response = await this.pool.query(query);
-    return response.rows;
+    // const query = 'SELECT * from task';
+    // const response = await this.pool.query(query);
+    // const [data, metadata] = await this.pool.query(query);
+    // return response.rows;
+    // return { data };
+    
+    const query = await models.Product.findAll();
+    return query;
   }
 
   async findOne(id) {
-    const product = this.products.find((item) => item.id === id);
-    if (!product) {
-      throw boom.notFound('Product not found');
-    }
+    // const product = this.products.find((item) => item.id === id);
+    // if (!product) {
+      // throw boom.notFound('Product not found');
+    // }
 
-    if (product.isBlock) {
-      throw boom.conflict('Product is block');
-    }
+    // if (product.isBlock) {
+      // throw boom.conflict('Product is block');
+    // }
+    
+
+    const idNew = Number(id)
+    const product = await models.Product.findOne({
+      where: {
+        idNew,
+      },
+    });
     return product;
   }
 
