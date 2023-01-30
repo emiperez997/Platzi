@@ -107,3 +107,8 @@
 
 ## Modelos Sequelize
 
+
+## Migraciones
+- Es un sistema de control de versiones. Mantienen el historial del esquema que llevamos en nuestra db
+- Hacemos una primera migración y a partir de eso se sobreescribe la db
+- Paquete: npm i sequelize-cli -D
