@@ -18,8 +18,8 @@
           - POSTGRES_PASSWORD=admin
         ports:
           - 5432:5432
-	volumes:
-	  - ./postgres_data:/var/lib/postgresql/data 
+		 volumes:
+	   	- ./postgres_data:/var/lib/postgresql/data 
 
 - Luego utilizamos docker-compose para ejecutarlo: 
 
@@ -112,3 +112,27 @@
 - Es un sistema de control de versiones. Mantienen el historial del esquema que llevamos en nuestra db
 - Hacemos una primera migración y a partir de eso se sobreescribe la db
 - Paquete: npm i sequelize-cli -D
+
+### Scripts 
+
+		"migrations:generate": "sequelize-cli migration:generate --name",
+		"migrations:run": "sequelize-cli db:migrate",
+		"migration:revert": "sequelize-cli db:migrate:undo",
+		"migration:delete": "sequelize-cli db:migrate:undo:all"
+
+### Migrations
+- Crea un archivo "<fecha>-create-user.js"
+- Modificamos el archivo y agregamos el userSchema y USER_TABLE. 
+
+### .sequelizerc
+- Configuración inicial de sequelize-cli
+
+		module.exports = {
+			'config': './db/config.js',
+			'models-path': './db/models/',
+			'migrations-path': './db/migrations/',
+			'seeders-path': './db/seeders/'
+		}
+
+### Tablas Migrations
+- SequelizeMeta: Registra los datos de migraciones

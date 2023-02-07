@@ -3,8 +3,8 @@
 ## Secciones
 - [ x ] Introducción
 - [ x ] Base de Datos
-- [  ] Sequelize
-- [  ] Migraciones
+- [ x ] Sequelize
+- [ x ] Migraciones
 - [  ] Relaciones
 - [  ] Consultas
 - [  ] Despliegue
